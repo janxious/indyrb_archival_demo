@@ -39,36 +39,58 @@ see tests in [foo_test.rb](http://github.com/janxious/indyrb_archival_demo/blob/
 5. Using the code is really complicated<br />
 See my examples above
 
-6. It fucks with find, destroy, and delete.
-
-This will screw you, immediately, or when it's really important.
-
+6. It fucks with find, destroy, and delete.<br/ >
+This will screw you, immediately, or when it's really important.<br />
 Additionally, everyone needs on your team needs to know how and why it's screwing with these methods, or they will screw everyone.
 
 7. Annoying
-        f = Foo.first
-        f.destroy
-        f.recover! #ERRRORRRRROR, Wesley
-        Foo.find_with_deleted(:all).first.recover!
-         
-        Foo.all_with_deleted doesn't exist
-        Foo.first_with_deleted doesn't exist
-        etc.
+    f = Foo.first
+    f.destroy
+    f.recover! #ERRRORRRRROR, Wesley
+    Foo.find_with_deleted(:all).first.recover!
+    Foo.all_with_deleted doesn't exist
+    Foo.first_with_deleted doesn't exist
+    etc.
 
 
-Reasons to love AAA
+#Reasons to love acts_as_archival#
 1. It's consistent
+See [xx_test](http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/xx_test.rb)
 
-2. It has a simple interface
-See xx_test
-4 class methods added, 3 instance methods added
+2. It has a simple interface<br />
+See [xx_test]http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/xx_test.rb()<br />
+marking a class as AAA adds 4 class methods and 3 instance methods, and 2 callbacks
 
 3. Atomic
 you won't unarchive associations unintentionally
 
 4. Our documentation isn't "Read the code"
-Srsly, check out that README
+Srsly, check out that [README](http://github.com/expectedbehavior/acts_as_archival/blob/master/README)
 
-Reasons to hate AAA
+#Reasons to hate AAA#
 1. The code is still pretty complicated
-/lib/expected_behavior/acts_as_archival.rb
+[acts_as_archival.rb](http://github.com/expectedbehavior/acts_as_archival/blob/master/lib/expected_behavior/acts_as_archival.rb)
+
+      def act_on_all_archival_associations(head_archive_number, options={})
+        return if options.length == 0
+        options[:association_options] ||= Proc.new { true }
+        self.class.reflect_on_all_associations.each do |association|
+          if association.klass.is_archival? && association.macro.to_s =~ /^has/ && options[:association_options].call(association)
+            act_on_a_related_archival(association.klass, association.primary_key_name, id, head_archive_number, options)
+          end
+        end
+      end
+          
+      def act_on_a_related_archival(klass, key_name, id, head_archive_number, options={})
+        # puts "[klass => #{klass.name}, key_name => #{key_name}, :id => #{id}, :head_archive_number => #{head_archive_number}, options => #{options.inspect}]"
+        return if options.length == 0 || (!options[:archive] && !options[:unarchive])
+        if options[:archive]
+          klass.unarchived.find(:all, :conditions => ["#{key_name} = ?", id]).each do |related_record|
+            related_record.archive(head_archive_number)
+          end
+        else
+          klass.archived.find(:all, :conditions => ["#{key_name} = ? AND archive_number = ?", id, head_archive_number]).each do |related_record|
+            related_record.unarchive(head_archive_number)
+          end
+        end
+      end
