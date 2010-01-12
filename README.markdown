@@ -1,5 +1,7 @@
 [Demo for Indy.rb!](http://github.com/janxious/indyrb_archival_demo)
+
 Gems required to run unit tests:
+
 * redgreen
 * assertions
 
@@ -11,10 +13,8 @@ Reasons to hate AAP
 See tests in foo_test.rb
 
 2. It is not atomic
-see tests in foo_test.rb
-
-lib/caboose/acts/paranoid.rb
-
+see tests in foo_test.rb<br />
+[parnoid.rb](http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid.rb)
     def recover!
       self.deleted_at = nil
       save!
@@ -29,8 +29,7 @@ lib/caboose/acts/paranoid.rb
       end
     end
 
-
-#3. Warner Hertzog
+3. [Warner Hertzog](http://www.youtube.com/watch?v=FxKtZmQgxrI)
 
 4. The code is really complicated
 lib/caboose/acts/paranoid_find_wrapper.rb
