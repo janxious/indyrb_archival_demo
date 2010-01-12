@@ -37,14 +37,14 @@ See my examples above
 This will screw you, immediately, or when it's really important.
 Additionally, everyone needs on your team needs to know how and why it's screwing with these methods, or they will screw everyone.
 # Annoying
-<code>f = Foo.first
+<pre><code>f = Foo.first
 f.destroy
 f.recover! #ERRRORRRRROR, Wesley
 Foo.find_with_deleted(:all).first.recover!
 Foo.all_with_deleted doesn't exist
 Foo.first_with_deleted doesn't exist
 etc.
-</code>
+</code></pre>
 
 
 #Reasons to love acts_as_archival#
