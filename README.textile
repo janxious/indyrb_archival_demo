@@ -1,12 +1,11 @@
 "Demo for Indy.rb!":http://github.com/janxious/indyrb_archival_demo
 
 Gems required to run unit tests:
-
 * redgreen
 * assertions
 
-What is this stupid app doing?<br />
-_Foo has_many Bar_ - acts_as_paranoid test models<br />
+What is this stupid app doing?
+_Foo has_many Bar_ - acts_as_paranoid test models
 _Xx has_many Yy_ - acts_as_archival test models
 
 #Reasons to hate acts_as_paranoid#
