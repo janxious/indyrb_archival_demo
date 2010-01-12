@@ -16,19 +16,19 @@ See tests in foo_test.rb
 see tests in foo_test.rb<br />
 [parnoid.rb](http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid.rb)
 
-      def recover!
-        self.deleted_at = nil
-        save!
-      end
-       
-      def recover_with_associations!(*associations)
-        self.recover!
-        associations.to_a.each do |assoc|
-          self.send(assoc).find_with_deleted(:all).each do |a|
-            a.recover! if a.class.paranoid?
+        def recover!
+          self.deleted_at = nil
+          save!
+        end
+         
+        def recover_with_associations!(*associations)
+          self.recover!
+          associations.to_a.each do |assoc|
+            self.send(assoc).find_with_deleted(:all).each do |a|
+              a.recover! if a.class.paranoid?
+            end
           end
         end
-      end
 
 3. [Warner Hertzog](http://www.youtube.com/watch?v=FxKtZmQgxrI)
 
