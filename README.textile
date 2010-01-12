@@ -1,7 +1,8 @@
 "Demo for Indy.rb!":http://github.com/janxious/indyrb_archival_demo
 
 Gems required to run unit tests:
-<ul><li>redgreen</li><li>assertions</li></ul>
+* redgreen
+* assertions
 
 What is this stupid app doing?
 _Foo has_many Bar_ - acts_as_paranoid test models
@@ -11,8 +12,8 @@ h1. Reasons to hate acts_as_paranoid
 # It has an inconsistent interface
   See tests in "foo_test.rb":http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb
 # It is not atomic.
-  see tests in [foo_test.rb](http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb)<br />
-  aap - parnoid.rb:http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid.rb
+see tests in "foo_test.rb":http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb
+"aap - parnoid.rb":http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid.rb
 <code>def recover!
   self.deleted_at = nil
   save!
