@@ -52,7 +52,7 @@ class FooTest < ActiveSupport::TestCase
 
   
   #atomicity
-  test "Patrick Stewart: atomics!, part 1" do
+  test "atomicity, part 1 - \"Atomics!\" -- Patrick Stewart" do
     @b1.destroy
     @f.destroy
     assert_equal 0, Bar.all.size
