@@ -14,7 +14,7 @@ See tests in foo_test.rb
 
 2. It is not atomic
 see tests in foo_test.rb<br />
-[parnoid.rb](http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid.rb)
+[parnoid.rb](http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid.rb)<br />
     def recover!
       self.deleted_at = nil
       save!
