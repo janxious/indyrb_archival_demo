@@ -15,7 +15,7 @@ See tests in "foo_test.rb":http://github.com/janxious/indyrb_archival_demo/blob/
 # It is not atomic.
 see tests in [foo_test.rb](http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb)<br />
 aap - parnoid.rb:http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid.rb
-<pre>def recover!
+<code>def recover!
   self.deleted_at = nil
   save!
 end
@@ -26,7 +26,7 @@ def recover_with_associations!(*associations)
       a.recover! if a.class.paranoid?
     end
   end
-end</pre>
+end</code>
 
 # "Warner Hertzog":http://www.youtube.com/watch?v=FxKtZmQgxrI
 
