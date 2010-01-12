@@ -1,9 +1,0 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-one:
-  name: MyString
-  deleted_at: 2010-01-12 12:57:29
-
-two:
-  name: MyString
-  deleted_at: 2010-01-12 12:57:29
