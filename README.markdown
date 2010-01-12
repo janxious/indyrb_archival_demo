@@ -71,26 +71,26 @@ Srsly, check out that [README](http://github.com/expectedbehavior/acts_as_archiv
 1. The code is still pretty complicated
 [acts_as_archival.rb](http://github.com/expectedbehavior/acts_as_archival/blob/master/lib/expected_behavior/acts_as_archival.rb)
 
-      def act_on_all_archival_associations(head_archive_number, options={})
-        return if options.length == 0
-        options[:association_options] ||= Proc.new { true }
-        self.class.reflect_on_all_associations.each do |association|
-          if association.klass.is_archival? && association.macro.to_s =~ /^has/ && options[:association_options].call(association)
-            act_on_a_related_archival(association.klass, association.primary_key_name, id, head_archive_number, options)
+        def act_on_all_archival_associations(head_archive_number, options={})
+          return if options.length == 0
+          options[:association_options] ||= Proc.new { true }
+          self.class.reflect_on_all_associations.each do |association|
+            if association.klass.is_archival? && association.macro.to_s =~ /^has/ && options[:association_options].call(association)
+              act_on_a_related_archival(association.klass, association.primary_key_name, id, head_archive_number, options)
+            end
           end
         end
-      end
-          
-      def act_on_a_related_archival(klass, key_name, id, head_archive_number, options={})
-        # puts "[klass => #{klass.name}, key_name => #{key_name}, :id => #{id}, :head_archive_number => #{head_archive_number}, options => #{options.inspect}]"
-        return if options.length == 0 || (!options[:archive] && !options[:unarchive])
-        if options[:archive]
-          klass.unarchived.find(:all, :conditions => ["#{key_name} = ?", id]).each do |related_record|
-            related_record.archive(head_archive_number)
-          end
-        else
-          klass.archived.find(:all, :conditions => ["#{key_name} = ? AND archive_number = ?", id, head_archive_number]).each do |related_record|
-            related_record.unarchive(head_archive_number)
+            
+        def act_on_a_related_archival(klass, key_name, id, head_archive_number, options={})
+          # puts "[klass => #{klass.name}, key_name => #{key_name}, :id => #{id}, :head_archive_number => #{head_archive_number}, options => #{options.inspect}]"
+          return if options.length == 0 || (!options[:archive] && !options[:unarchive])
+          if options[:archive]
+            klass.unarchived.find(:all, :conditions => ["#{key_name} = ?", id]).each do |related_record|
+              related_record.archive(head_archive_number)
+            end
+          else
+            klass.archived.find(:all, :conditions => ["#{key_name} = ? AND archive_number = ?", id, head_archive_number]).each do |related_record|
+              related_record.unarchive(head_archive_number)
+            end
           end
         end
-      end
