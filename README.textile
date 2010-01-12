@@ -8,10 +8,9 @@ What is this stupid app doing?
 _Foo has_many Bar_ - acts_as_paranoid test models
 _Xx has_many Yy_ - acts_as_archival test models
 
-h1. Reasons to hate acts_as_paranoid
+h2. Reasons to hate acts_as_paranoid
 # It has an inconsistent interface
     See tests in "foo_test.rb":http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb
-
 # It is not atomic.
     see tests in "foo_test.rb":http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb
     "aap - parnoid.rb":http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid.rb
@@ -29,19 +28,14 @@ h1. Reasons to hate acts_as_paranoid
       end
     end
     </code></pre>
-# "Warner Hertzog":http://www.youtube.com/watch?v=FxKtZmQgxrI
 # The code is really complicated
     "aap - paranoid_find_wrapper.rb":http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid_find_wrapper.rb
-
 # Using the code is really complicated
     See my examples above
-
 # It significantly messes with find, destroy, and delete.
     This will screw you, immediately, or when it's really important.
     Additionally, everyone needs on your team needs to know how and why it's screwing with these methods, or they will screw everyone.
-
 # It is annoying - it lacks lots of helpers you would expect
-
     <pre><code>
     f = Foo.first
     f.destroy
@@ -52,44 +46,42 @@ h1. Reasons to hate acts_as_paranoid
     etc.
     </code></pre>
 
-#Reasons to love acts_as_archival#
-1. It's consistent
-See [xx_test](http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/xx_test.rb)
+h2. Reasons to love acts_as_archival
+# It's consistent
+    See "xx_test":http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/xx_test.rb
+# It has a simple interface
+    See "xx_test":http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/xx_test.rb
+    marking a class as AAA adds 4 class methods and 3 instance methods, and 2 callbacks
+# Atomic
+    You won't unarchive associations unintentionally.
+# Our documentation isn't "Read the code"
+    Srsly, check out that "README":http://github.com/expectedbehavior/acts_as_archival/blob/master/README
 
-2. It has a simple interface<br />
-See [xx_test]http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/xx_test.rb()<br />
-marking a class as AAA adds 4 class methods and 3 instance methods, and 2 callbacks
-
-3. Atomic
-you won't unarchive associations unintentionally
-
-4. Our documentation isn't "Read the code"
-Srsly, check out that [README](http://github.com/expectedbehavior/acts_as_archival/blob/master/README)
-
-#Reasons to hate AAA#
-1. The code is still pretty complicated
-[acts_as_archival.rb](http://github.com/expectedbehavior/acts_as_archival/blob/master/lib/expected_behavior/acts_as_archival.rb)
-
-  def act_on_all_archival_associations(head_archive_number, options={})
-    return if options.length == 0
-    options[:association_options] ||= Proc.new { true }
-    self.class.reflect_on_all_associations.each do |association|
-      if association.klass.is_archival? && association.macro.to_s =~ /^has/ && options[:association_options].call(association)
-        act_on_a_related_archival(association.klass, association.primary_key_name, id, head_archive_number, options)
+h2. Reasons to hate acts_as_archival
+# The code is still pretty complicated
+"acts_as_archival.rb":http://github.com/expectedbehavior/acts_as_archival/blob/master/lib/expected_behavior/acts_as_archival.rb
+    <pre><code>
+    def act_on_all_archival_associations(head_archive_number, options={})
+      return if options.length == 0
+      options[:association_options] ||= Proc.new { true }
+      self.class.reflect_on_all_associations.each do |association|
+        if association.klass.is_archival? && association.macro.to_s =~ /^has/ && options[:association_options].call(association)
+          act_on_a_related_archival(association.klass, association.primary_key_name, id, head_archive_number, options)
+        end
       end
     end
-  end
-      
-  def act_on_a_related_archival(klass, key_name, id, head_archive_number, options={})
-    # puts "[klass => #{klass.name}, key_name => #{key_name}, :id => #{id}, :head_archive_number => #{head_archive_number}, options => #{options.inspect}]"
-    return if options.length == 0 || (!options[:archive] && !options[:unarchive])
-    if options[:archive]
-      klass.unarchived.find(:all, :conditions => ["#{key_name} = ?", id]).each do |related_record|
-        related_record.archive(head_archive_number)
-      end
-    else
-      klass.archived.find(:all, :conditions => ["#{key_name} = ? AND archive_number = ?", id, head_archive_number]).each do |related_record|
-        related_record.unarchive(head_archive_number)
+        
+    def act_on_a_related_archival(klass, key_name, id, head_archive_number, options={})
+      # puts "[klass => #{klass.name}, key_name => #{key_name}, :id => #{id}, :head_archive_number => #{head_archive_number}, options => #{options.inspect}]"
+      return if options.length == 0 || (!options[:archive] && !options[:unarchive])
+      if options[:archive]
+        klass.unarchived.find(:all, :conditions => ["#{key_name} = ?", id]).each do |related_record|
+          related_record.archive(head_archive_number)
+        end
+      else
+        klass.archived.find(:all, :conditions => ["#{key_name} = ? AND archive_number = ?", id, head_archive_number]).each do |related_record|
+          related_record.unarchive(head_archive_number)
+        end
       end
     end
-  end
+    </code></pre>
