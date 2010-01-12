@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  foo_id: 1
+  name: MyString
+  deleted_at: 2010-01-12 12:57:50
+
+two:
+  foo_id: 1
+  name: MyString
+  deleted_at: 2010-01-12 12:57:50

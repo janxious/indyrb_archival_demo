@@ -1,0 +1,24 @@
+<h1>Listing bars</h1>
+
+<table>
+  <tr>
+    <th>Foo</th>
+    <th>Name</th>
+    <th>Deleted at</th>
+  </tr>
+
+<% @bars.each do |bar| %>
+  <tr>
+    <td><%=h bar.foo_id %></td>
+    <td><%=h bar.name %></td>
+    <td><%=h bar.deleted_at %></td>
+    <td><%= link_to 'Show', bar %></td>
+    <td><%= link_to 'Edit', edit_bar_path(bar) %></td>
+    <td><%= link_to 'Destroy', bar, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New bar', new_bar_path %>

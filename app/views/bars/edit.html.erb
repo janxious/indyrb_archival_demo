@@ -1,0 +1,24 @@
+<h1>Editing bar</h1>
+
+<% form_for(@bar) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :foo_id %><br />
+    <%= f.text_field :foo_id %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :deleted_at %><br />
+    <%= f.datetime_select :deleted_at %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @bar %> |
+<%= link_to 'Back', bars_path %>

@@ -1,0 +1,20 @@
+<h1>Editing foo</h1>
+
+<% form_for(@foo) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :deleted_at %><br />
+    <%= f.datetime_select :deleted_at %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @foo %> |
+<%= link_to 'Back', foos_path %>
