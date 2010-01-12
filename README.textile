@@ -37,16 +37,16 @@ See my examples above
 This will screw you, immediately, or when it's really important.
 Additionally, everyone needs on your team needs to know how and why it's screwing with these methods, or they will screw everyone.
 # It is annoying - it lacks lots of helpers you would expect
-  <pre><code>
-  f = Foo.first
-  f.destroy
-  # you can't modify 'f' because it's now a locked hash.
-  f.recover! # ERRRORRRRROR, Wesley
-  Foo.find_with_deleted(:all).first.recover!
-  Foo.all_with_deleted doesn't exist #ERROR NoMethod
-  Foo.first_with_deleted doesn't exist #ERROR NoMethod
-  etc.
-  </code></pre>
+    <pre><code>
+    f = Foo.first
+    f.destroy
+    # you can't modify 'f' because it's now a locked hash.
+    f.recover! # ERRRORRRRROR, Wesley
+    Foo.find_with_deleted(:all).first.recover!
+    Foo.all_with_deleted doesn't exist #ERROR NoMethod
+    Foo.first_with_deleted doesn't exist #ERROR NoMethod
+    etc.
+    </code></pre>
 
 
 #Reasons to love acts_as_archival#
