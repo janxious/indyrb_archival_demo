@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :yys
+
+  map.resources :xxes
+
   map.resources :bars
 
   map.resources :foos

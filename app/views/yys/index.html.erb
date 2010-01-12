@@ -1,0 +1,26 @@
+<h1>Listing yys</h1>
+
+<table>
+  <tr>
+    <th>Xx</th>
+    <th>Name</th>
+    <th>Archived at</th>
+    <th>Archive number</th>
+  </tr>
+
+<% @yys.each do |yy| %>
+  <tr>
+    <td><%=h yy.xx_id %></td>
+    <td><%=h yy.name %></td>
+    <td><%=h yy.archived_at %></td>
+    <td><%=h yy.archive_number %></td>
+    <td><%= link_to 'Show', yy %></td>
+    <td><%= link_to 'Edit', edit_yy_path(yy) %></td>
+    <td><%= link_to 'Destroy', yy, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New yy', new_yy_path %>

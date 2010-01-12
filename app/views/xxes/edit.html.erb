@@ -1,0 +1,24 @@
+<h1>Editing xx</h1>
+
+<% form_for(@xx) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :archived_at %><br />
+    <%= f.datetime_select :archived_at %>
+  </p>
+  <p>
+    <%= f.label :archive_number %><br />
+    <%= f.text_field :archive_number %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @xx %> |
+<%= link_to 'Back', xxes_path %>
