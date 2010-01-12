@@ -1,4 +1,4 @@
-[Demo for Indy.rb!](http://github.com/janxious/indyrb_archival_demo)
+"Demo for Indy.rb!":http://github.com/janxious/indyrb_archival_demo
 
 Gems required to run unit tests:
 
