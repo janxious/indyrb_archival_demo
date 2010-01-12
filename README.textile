@@ -37,6 +37,7 @@ See my examples above
 This will screw you, immediately, or when it's really important.
 Additionally, everyone needs on your team needs to know how and why it's screwing with these methods, or they will screw everyone.
 # It is annoying - it lacks lots of helpers you would expect
+
     <pre><code>
     f = Foo.first
     f.destroy
