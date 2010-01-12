@@ -44,13 +44,13 @@ This will screw you, immediately, or when it's really important.<br />
 Additionally, everyone needs on your team needs to know how and why it's screwing with these methods, or they will screw everyone.
 
 7. Annoying
-  f = Foo.first
-  f.destroy
-  f.recover! #ERRRORRRRROR, Wesley
-  Foo.find_with_deleted(:all).first.recover!
-  Foo.all_with_deleted doesn't exist
-  Foo.first_with_deleted doesn't exist
-  etc.
+ f = Foo.first
+ f.destroy
+ f.recover! #ERRRORRRRROR, Wesley
+ Foo.find_with_deleted(:all).first.recover!
+ Foo.all_with_deleted doesn't exist
+ Foo.first_with_deleted doesn't exist
+ etc.
 
 
 #Reasons to love acts_as_archival#
