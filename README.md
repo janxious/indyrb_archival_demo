@@ -1,8 +1,10 @@
-http://github.com/janxious/indyrb_archival_demo
-requires redgreen, assertions
+[Demo for Indy.rb!](http://github.com/janxious/indyrb_archival_demo)
+Gems required to run unit tests:
+* redgreen
+* assertions
 
-Foo has_many Bar - AAP
-Xx has_many Yy - AAA
+_Foo has_many Bar_ - acts_as_paranoid test models
+_Xx has_many Yy_ - acts_as_archival test models
 
 Reasons to hate AAP
 1. It has an inconsistent interface
@@ -13,19 +15,19 @@ see tests in foo_test.rb
 
 lib/caboose/acts/paranoid.rb
 
-  def recover!
-    self.deleted_at = nil
-    save!
-  end
-   
-  def recover_with_associations!(*associations)
-    self.recover!
-    associations.to_a.each do |assoc|
-      self.send(assoc).find_with_deleted(:all).each do |a|
-        a.recover! if a.class.paranoid?
+    def recover!
+      self.deleted_at = nil
+      save!
+    end
+     
+    def recover_with_associations!(*associations)
+      self.recover!
+      associations.to_a.each do |assoc|
+        self.send(assoc).find_with_deleted(:all).each do |a|
+          a.recover! if a.class.paranoid?
+        end
       end
     end
-  end
 
 
 #3. Warner Hertzog
