@@ -11,19 +11,19 @@ See tests in foo_test.rb
 2. It is not atomic
 see tests in foo_test.rb
 lib/caboose/acts/paranoid.rb
-def recover!
-  self.deleted_at = nil
-  save!
-end
-
-def recover_with_associations!(*associations)
-  self.recover!
-  associations.to_a.each do |assoc|
-    self.send(assoc).find_with_deleted(:all).each do |a|
-      a.recover! if a.class.paranoid?
+  def recover!
+    self.deleted_at = nil
+    save!
+  end
+   
+  def recover_with_associations!(*associations)
+    self.recover!
+    associations.to_a.each do |assoc|
+      self.send(assoc).find_with_deleted(:all).each do |a|
+        a.recover! if a.class.paranoid?
+      end
     end
   end
-end
 
 
 #3. Warner Hertzog
