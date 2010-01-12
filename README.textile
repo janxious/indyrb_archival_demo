@@ -11,7 +11,7 @@ _Xx has_many Yy_ - acts_as_archival test models
 h2. Reasons to hate acts_as_paranoid
 # It has an inconsistent interface
     See tests in "foo_test.rb":http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb
-  
+    <br />
 # It is not atomic.
     see tests in "foo_test.rb":http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb
     "aap - parnoid.rb":http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid.rb
@@ -29,13 +29,16 @@ h2. Reasons to hate acts_as_paranoid
       end
     end
     </code></pre>
+    <br />
 # The code is really complicated
     "aap - paranoid_find_wrapper.rb":http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid_find_wrapper.rb
 # Using the code is really complicated
     See my examples above
+    <br />
 # It significantly messes with find, destroy, and delete.
     This will screw you, immediately, or when it's really important.
     Additionally, everyone needs on your team needs to know how and why it's screwing with these methods, or they will screw everyone.
+    <br />
 # It is annoying - it lacks lots of helpers you would expect
     <pre><code>
     f = Foo.first
@@ -46,17 +49,23 @@ h2. Reasons to hate acts_as_paranoid
     Foo.first_with_deleted doesn't exist #ERROR NoMethod
     etc.
     </code></pre>
+    <br />
 
 h2. Reasons to love acts_as_archival
 # It's consistent
     See "xx_test":http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/xx_test.rb
-# It has a simple interface
+    <br />
+# It has a pretty limited interface, and doesn't mess with active_record a great deal
     See "xx_test":http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/xx_test.rb
     marking a class as AAA adds 4 class methods and 3 instance methods, and 2 callbacks
+    Also, it doesn't change any of the standard AR calls
+    <br />
 # Atomic
     You won't unarchive associations unintentionally.
+    <br />
 # Our documentation isn't "Read the code"
     Srsly, check out that "README":http://github.com/expectedbehavior/acts_as_archival/blob/master/README
+    <br />
 
 h2. Reasons to hate acts_as_archival
 # The code is still pretty complicated
