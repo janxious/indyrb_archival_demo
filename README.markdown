@@ -5,10 +5,11 @@ Gems required to run unit tests:
 * redgreen
 * assertions
 
-_Foo has_many Bar_ - acts_as_paranoid test models
+What is this stupid app doing?<br />
+_Foo has_many Bar_ - acts_as_paranoid test models<br />
 _Xx has_many Yy_ - acts_as_archival test models
 
-Reasons to hate AAP
+#Reasons to hate acts_as_paranoid#
 1. It has an inconsistent interface<br />
 See tests in [foo_test.rb](http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb)
 
