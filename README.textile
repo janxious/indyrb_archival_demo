@@ -78,7 +78,6 @@ h2. Reasons to hate acts_as_archival
         end
       end
     end
-     
     def act_on_a_related_archival(klass, key_name, id, head_archive_number, options={})
       return if options.length == 0 || (!options[:archive] && !options[:unarchive])
       if options[:archive]
