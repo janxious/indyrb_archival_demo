@@ -10,7 +10,9 @@ See tests in foo_test.rb
 
 2. It is not atomic
 see tests in foo_test.rb
+
 lib/caboose/acts/paranoid.rb
+
   def recover!
     self.deleted_at = nil
     save!
