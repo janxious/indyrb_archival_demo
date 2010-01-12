@@ -19,7 +19,6 @@ aap - parnoid.rb:http://github.com/technoweenie/acts_as_paranoid/blob/master/lib
   self.deleted_at = nil
   save!
 end
- 
 def recover_with_associations!(*associations)
   self.recover!
   associations.to_a.each do |assoc|
