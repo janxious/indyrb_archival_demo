@@ -16,8 +16,7 @@ See tests in [foo_test.rb](http://github.com/janxious/indyrb_archival_demo/blob/
 2. It is not atomic.<br />
 see tests in [foo_test.rb](http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb)<br />
 [aap - parnoid.rb](http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid.rb)
-
-  <pre>def recover!
+  def recover!
     self.deleted_at = nil
     save!
   end
@@ -29,7 +28,7 @@ see tests in [foo_test.rb](http://github.com/janxious/indyrb_archival_demo/blob/
         a.recover! if a.class.paranoid?
       end
     end
-  end</pre>
+  end
 
 3. [Warner Hertzog](http://www.youtube.com/watch?v=FxKtZmQgxrI)
 
@@ -44,13 +43,13 @@ This will screw you, immediately, or when it's really important.<br />
 Additionally, everyone needs on your team needs to know how and why it's screwing with these methods, or they will screw everyone.
 
 7. Annoying
-  <pre>f = Foo.first
+  f = Foo.first
   f.destroy
   f.recover! #ERRRORRRRROR, Wesley
   Foo.find_with_deleted(:all).first.recover!
   Foo.all_with_deleted doesn't exist
   Foo.first_with_deleted doesn't exist
-  etc.</pre>
+  etc.
 
 
 #Reasons to love acts_as_archival#
