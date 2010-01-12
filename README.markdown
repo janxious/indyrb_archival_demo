@@ -17,19 +17,19 @@ See tests in [foo_test.rb](http://github.com/janxious/indyrb_archival_demo/blob/
 see tests in [foo_test.rb](http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb)<br />
 [aap - parnoid.rb](http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid.rb)
 
-   def recover!
-     self.deleted_at = nil
-     save!
-   end
-    
-   def recover_with_associations!(*associations)
-     self.recover!
-     associations.to_a.each do |assoc|
-       self.send(assoc).find_with_deleted(:all).each do |a|
-         a.recover! if a.class.paranoid?
-       end
-     end
-   end
+    def recover!
+      self.deleted_at = nil
+      save!
+    end
+     
+    def recover_with_associations!(*associations)
+      self.recover!
+      associations.to_a.each do |assoc|
+        self.send(assoc).find_with_deleted(:all).each do |a|
+          a.recover! if a.class.paranoid?
+        end
+      end
+    end
 
 3. [Warner Hertzog](http://www.youtube.com/watch?v=FxKtZmQgxrI)
 
