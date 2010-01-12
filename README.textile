@@ -14,18 +14,19 @@ h1. Reasons to hate acts_as_paranoid
 # It is not atomic.
 see tests in "foo_test.rb":http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb
 "aap - parnoid.rb":http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid.rb
-<pre>def recover!
-  self.deleted_at = nil
-  save!
-end
-def recover_with_associations!(*associations)
-  self.recover!
-  associations.to_a.each do |assoc|
-    self.send(assoc).find_with_deleted(:all).each do |a|
-      a.recover! if a.class.paranoid?
-    end
-  end
-end</pre>
+<code>def recover!<br />
+  self.deleted_at = nil<br />
+  save!<br />
+end<br />
+<br />
+def recover_with_associations!(*associations)<br />
+  self.recover!<br />
+  associations.to_a.each do |assoc|<br />
+    self.send(assoc).find_with_deleted(:all).each do |a|<br />
+      a.recover! if a.class.paranoid?<br />
+    end<br />
+  end<br />
+end</code>
 # "Warner Hertzog":http://www.youtube.com/watch?v=FxKtZmQgxrI
 # The code is really complicated
 "aap - paranoid_find_wrapper.rb":http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid_find_wrapper.rb
