@@ -11,6 +11,7 @@ _Xx has_many Yy_ - acts_as_archival test models
 h2. Reasons to hate acts_as_paranoid
 # It has an inconsistent interface
     See tests in "foo_test.rb":http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb
+  
 # It is not atomic.
     see tests in "foo_test.rb":http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb
     "aap - parnoid.rb":http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid.rb
