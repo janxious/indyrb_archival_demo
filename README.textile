@@ -30,10 +30,8 @@ h2. Reasons to hate acts_as_paranoid
     end
     </code></pre>
     <br />
-# The code is really complicated
+# The code is pretty complicated
     "aap - paranoid_find_wrapper.rb":http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid_find_wrapper.rb
-# Using the code is really complicated
-    See my examples above
     <br />
 # It significantly messes with find, destroy, and delete.
     This will screw you, immediately, or when it's really important.
