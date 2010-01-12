@@ -11,6 +11,7 @@ class FooTest < ActiveSupport::TestCase
     @b1 = @f.bars.create(:name => "bar1")
   end
 
+  #inconsistencies
 #   test "inconsistent interface, part 1" do
 #     @f.destroy
 #     assert @f.destroyed?, "I just destroyed this!"
@@ -48,6 +49,25 @@ class FooTest < ActiveSupport::TestCase
 # #     @f.recover!
 #     assert_equal 1, Foo.all.size, "GIVE ME BACK MAH DATAZ"
 #   end
+
   
+  #atomicity
+#   test "Patrick Stewart: atomics!, part 1" do
+#     @b1.destroy
+#     @f.destroy
+#     assert_equal 0, Bar.all.size
+#     assert_equal 0, Foo.all.size
+    
+#     Foo.find_with_deleted(:all).first.recover!
+#     assert_equal 1, Foo.all.size
+#     assert_equal 1, Bar.all.size, "Maybe I need to use some other method"
+#   end
   
+#   test "atomicity, part 2" do
+#     @b1.destroy
+#     @f.destroy
+#     Foo.find_with_deleted(:all).first.recover_with_associations!(:bars)
+#     assert_equal 1, Foo.all.size
+#     assert_equal 1, Bar.all.size, "I'm sure I'll just get back the one I wanted that was part of the parent destroy"
+#   end
 end
