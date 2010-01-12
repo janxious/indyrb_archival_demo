@@ -17,10 +17,10 @@ See tests in [foo_test.rb](http://github.com/janxious/indyrb_archival_demo/blob/
 see tests in [foo_test.rb](http://github.com/janxious/indyrb_archival_demo/blob/master/test/unit/foo_test.rb)<br />
 [aap - parnoid.rb](http://github.com/technoweenie/acts_as_paranoid/blob/master/lib/caboose/acts/paranoid.rb)
 
-`def recover!`
-`  self.deleted_at = nil`
-`  save!`
-`end`
+<pre>def recover!
+  self.deleted_at = nil
+  save!
+end
  
 def recover_with_associations!(*associations)
   self.recover!
@@ -29,7 +29,7 @@ def recover_with_associations!(*associations)
       a.recover! if a.class.paranoid?
     end
   end
-end`
+end</pre>
 
 3. [Warner Hertzog](http://www.youtube.com/watch?v=FxKtZmQgxrI)
 
