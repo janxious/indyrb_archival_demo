@@ -24,3 +24,35 @@ end
 
 pp Yy.all
 
+
+Foo.paranoid?
+Foo.find
+Foo.find_without_find_wrapper
+Foo.find_with_deleted
+Foo.find_only_deleted
+Foo.exists?
+Foo.exists_only_deleted?
+Foo.count_with_deleted
+Foo.count_only_deleted
+Foo.count
+Foo.calculate
+Foo.calculate_with_deleted
+Foo.delete_all
+Foo.delete_all!
+Foo.find_every
+Foo.find_every_with_deleted
+@f.destroy_without_callbacks
+@f.destroy_with_callbacks!
+@f.destroy
+@f.deleted?
+Foo.find_with_deleted(:first).recover!
+Foo.find_with_deleted(:first).recover_with_associations!(:bars)
+
+Xx.is_archival?
+Xx.unarchived
+Xx.archived
+Xx.archived_from_archive_number(@x.archive_number)
+Yy.archived_from_archive_number(@x.archive_number)
+@x.is_archival?
+@x.archive
+@x.unarchive
