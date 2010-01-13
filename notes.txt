@@ -1,0 +1,26 @@
+20.times do |i|
+  f = Foo.create(:name => "foo#{i}")
+  f.bars.create(:name => "bar#{i}")
+end
+
+5.times do
+  Foo.first.destroy
+  sleep(rand(3)*0.1)
+end
+
+pp Bar.find_with_deleted(:all)
+
+
+
+20.times do |i|
+  x = Xx.create(:name => "xx#{i}")
+  x.yys.create(:name => "yy#{i}")
+end
+
+5.times do
+  Xx.first.archive
+  sleep(rand(3)*0.1)
+end
+
+pp Yy.all
+
